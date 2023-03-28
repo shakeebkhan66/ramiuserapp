@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 import 'package:userapp/screens/authentication/logout_screen.dart';
+import 'package:userapp/screens/providers/facebooksigninprovider.dart';
+import 'package:userapp/screens/providers/googlesigninprovider.dart';
 import 'package:userapp/screens/vehicles/myvehicles.dart';
 
 import '../constants/colors.dart';
 import '../constants/spinkit.dart';
-import 'googleandfacebookfunction_screen.dart';
+import 'authservice_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -24,6 +27,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var googleProvider = Provider.of<GoogleSignInProvider>(context, listen: false);
+    var facebookProvider = Provider.of<FacebookSignInProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: backgroundColorLoginScreen,
       body: SingleChildScrollView(
@@ -38,8 +43,9 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 100,
             ),
             InkWell(
-              onTap: () async {
-                await signInWithFacebook();
+              onTap: () {
+                // await AuthService().signInWithFacebook();
+                facebookProvider.signInWithFacebook(context);
               },
               child: Container(
                 height: 60,
@@ -82,32 +88,36 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             InkWell(
               onTap: () {
-                signInWithGoogle().then((value) {
-
-                  fireStore
-                      .collection('users')
-                      .doc('auth')
-                      .collection('googleUsers')
-                      .add(
-                          {'name': name, 'email': email, 'phoneNo': phoneNo, 'imageUrl': imageUrl});
-                  Navigator.push(
-                      context,
-                      PageTransition(
-                          type: PageTransitionType.topToBottom,
-                          duration: const Duration(milliseconds: 1000),
-                          alignment: Alignment.bottomCenter,
-                          child: const MyVehicles()));
-                }).catchError((e) {
-                  print(e);
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      backgroundColor: Colors.redAccent,
-                      dismissDirection: DismissDirection.startToEnd,
-                      content: Text(
-                        e.toString(),
-                        style:
-                            const TextStyle(color: Colors.white, fontSize: 17),
-                      )));
-                });
+                // AuthService().signInWithGoogle().then((value) {
+                //   fireStore
+                //       .collection('users')
+                //       .doc('auth')
+                //       .collection('googleUsers')
+                //       .add({
+                //     'name': AuthService().name,
+                //     'email': AuthService().email,
+                //     'phoneNo': AuthService().phoneNo,
+                //     'imageUrl': AuthService().imageUrl
+                //   });
+                //   Navigator.push(
+                //       context,
+                //       PageTransition(
+                //           type: PageTransitionType.topToBottom,
+                //           duration: const Duration(milliseconds: 1000),
+                //           alignment: Alignment.bottomCenter,
+                //           child: const MyVehicles()));
+                // }).catchError((e) {
+                //   print(e);
+                //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                //       backgroundColor: Colors.redAccent,
+                //       dismissDirection: DismissDirection.startToEnd,
+                //       content: Text(
+                //         e.toString(),
+                //         style:
+                //             const TextStyle(color: Colors.white, fontSize: 17),
+                //       )));
+                // });
+                googleProvider.googleLogIn(context);
               },
               child: Container(
                 height: 60,

@@ -46,8 +46,8 @@ dependencies:
   cloud_firestore:
   flutter_facebook_auth:
   flutter_login_facebook: ^1.7.0
-  provider:
   http: any
+  provider: ^6.0.5
 
 
 dev_dependencies:

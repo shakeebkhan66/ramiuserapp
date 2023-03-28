@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:userapp/screens/constants/colors.dart';
+import 'package:userapp/screens/providers/googlesigninprovider.dart';
 
 class AddNewVehicle extends StatefulWidget {
   const AddNewVehicle({Key? key}) : super(key: key);
@@ -42,6 +44,12 @@ class _AddNewVehicleState extends State<AddNewVehicle> {
               fontSize: 20.0),
         ),
         actions: [
+          IconButton(
+              onPressed: (){
+                final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+                provider.logout(context);
+              },
+              icon: const Icon(Icons.logout)),
           Padding(
             padding: const EdgeInsets.only(top: 10, bottom: 10, right: 20),
             child: MaterialButton(

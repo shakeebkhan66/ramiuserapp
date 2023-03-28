@@ -3,9 +3,9 @@
 <resources>
 
     <string name="app_name">Wosh User App</string>
-    <string name="facebook_app_id">885807089192007</string>
-    <string name="fb_login_protocol_scheme">fb87bc98f979db7b2fadb106a027d5aeb9</string>
-    <string name="facebook_client_token">e2f1059e51e8b5175adf133030ad11ee</string>
+    <string name="facebook_app_id">768264174735326</string>
+    <string name="fb_login_protocol_scheme">fb768264174735326</string>
+    <string name="facebook_client_token">625b5f76b7cd6a11d8216c4144846fa9</string>
 
 
 </resources>
