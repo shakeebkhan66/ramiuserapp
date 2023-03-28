@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<resources>
+
+    <string name="app_name">Wosh User App</string>
+    <string name="facebook_app_id">885807089192007</string>
+    <string name="fb_login_protocol_scheme">fb87bc98f979db7b2fadb106a027d5aeb9</string>
+    <string name="facebook_client_token">e2f1059e51e8b5175adf133030ad11ee</string>
+
+
+</resources>
+

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "100292600315",
+    "project_id": "wosh-4170f",
+    "storage_bucket": "wosh-4170f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100292600315:android:7f6134db638eb4cb702b5e",
+        "android_client_info": {
+          "package_name": "com.example.userapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "100292600315-jtcupbd4162acdmsa57fbkqt99og7nnu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCW7wL5d2Q3LM4cDHrMcaVcfq4_bW2WKaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "100292600315-8mbk0p67803mivqnjen3l7u320jum06j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
