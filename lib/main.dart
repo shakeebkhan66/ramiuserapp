@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:userapp/screens/authentication/login_screen.dart';
+import 'package:userapp/screens/location/location.dart';
 import 'package:userapp/screens/providers/facebooksigninprovider.dart';
 import 'package:userapp/screens/providers/googlesigninprovider.dart';
 

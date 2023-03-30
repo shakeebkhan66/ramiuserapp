@@ -46,6 +46,19 @@ class FacebookSignInProvider with ChangeNotifier{
     } catch (e) {
       print("error occurred");
       print(e.toString());
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+              backgroundColor: Colors.redAccent,
+              dismissDirection: DismissDirection.startToEnd,
+              behavior: SnackBarBehavior.floating,
+              margin: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).size.height - 200,
+                  right: 20,
+                  left: 20
+              ),
+              content: Text(e.toString(),
+                style: const TextStyle(color: Colors.white,
+                    fontSize: 17, fontWeight: FontWeight.w600),)));
     }
 
     notifyListeners();

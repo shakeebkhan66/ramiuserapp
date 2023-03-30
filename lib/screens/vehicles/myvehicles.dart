@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:userapp/screens/location/location.dart';
 
 import '../constants/colors.dart';
 import 'addnewvehicle_screen.dart';
@@ -116,26 +117,37 @@ class _MyVehiclesState extends State<MyVehicles> {
                                 ))
                           ],
                         ),
-                        Container(
-                          height: 50,
-                          width: MediaQuery.of(context).size.width,
-                          alignment: Alignment.center,
-                          margin: const EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 35),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.0),
-                            border: Border.all(color: Colors.grey.shade400),
-                            gradient: const LinearGradient(colors: [
-                              backgroundColorLoginScreen,
-                              backgroundColorLoginScreen1,
-                            ]),
-                          ),
-                          child: Text(
-                            "Time To Wash",
-                            style: GoogleFonts.actor(
-                                fontWeight: FontWeight.w900,
-                                letterSpacing: 1.0,
-                                color: Colors.white),
+                        InkWell(
+                          onTap: (){
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.leftToRight,
+                                    alignment: Alignment.bottomCenter,
+                                    duration: const Duration(milliseconds: 500),
+                                    child: const LocationScreen()));
+                          },
+                          child: Container(
+                            height: 50,
+                            width: MediaQuery.of(context).size.width,
+                            alignment: Alignment.center,
+                            margin: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 35),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              border: Border.all(color: Colors.grey.shade400),
+                              gradient: const LinearGradient(colors: [
+                                backgroundColorLoginScreen,
+                                backgroundColorLoginScreen1,
+                              ]),
+                            ),
+                            child: Text(
+                              "Time To Wash",
+                              style: GoogleFonts.actor(
+                                  fontWeight: FontWeight.w900,
+                                  letterSpacing: 1.0,
+                                  color: Colors.white),
+                            ),
                           ),
                         )
                       ],

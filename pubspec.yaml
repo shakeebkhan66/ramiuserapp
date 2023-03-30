@@ -45,9 +45,16 @@ dependencies:
   page_transition: ^2.0.9
   cloud_firestore:
   flutter_facebook_auth:
-  flutter_login_facebook: ^1.7.0
+  google_maps_flutter: ^2.2.5
+  geolocator: ^9.0.2
+  geocoding: ^2.1.0
+  uuid: ^3.0.7
+  location: ^4.4.0
+  modal_bottom_sheet: ^2.1.2
   http: any
   provider: ^6.0.5
+  permission_handler: ^10.2.0
+
 
 
 dev_dependencies:
