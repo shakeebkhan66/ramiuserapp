@@ -15,13 +15,24 @@ class GoogleSignInProvider with ChangeNotifier{
   GoogleSignInAccount? _user;
   GoogleSignInAccount get user => _user!;
 
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
+
+
   // TODO For Login
   Future googleLogIn(context) async{
 
     try{
+
+      if(!this.isLoading){
+        this._isLoading = true;
+        notifyListeners();
+      }
+
       final googleUser = await googleSignIn.signIn();
       if(googleUser == null) return;
       _user = googleUser;
+
 
       if(_user != null){
         Navigator.push(

@@ -167,7 +167,6 @@ class _MyVehiclesState extends State<MyVehicles> {
               PageTransition(
                   type: PageTransitionType.leftToRight,
                   alignment: Alignment.bottomCenter,
-                  duration: const Duration(milliseconds: 500),
                   child: const AddNewVehicle()));
         },
         child: Container(

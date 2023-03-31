@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     var googleProvider = Provider.of<GoogleSignInProvider>(context, listen: false);
     var facebookProvider = Provider.of<FacebookSignInProvider>(context, listen: false);
-    return Scaffold(
+    return googleProvider.isLoading ? Loading() : Scaffold(
       backgroundColor: backgroundColorLoginScreen,
       body: SingleChildScrollView(
         child: Column(
