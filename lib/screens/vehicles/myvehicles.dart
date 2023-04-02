@@ -18,17 +18,17 @@ class _MyVehiclesState extends State<MyVehicles> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: singInWithFacebookButtonColor,
-      appBar: AppBar(
-        backgroundColor: backgroundColorLoginScreen,
-        automaticallyImplyLeading: false,
-        title: const Text(
-          "My Vehicles",
-          style: TextStyle(
-              color: singInWithGoogleButtonColor,
-              fontWeight: FontWeight.w600,
-              fontSize: 20.0),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: backgroundColorLoginScreen,
+      //   automaticallyImplyLeading: false,
+      //   title: const Text(
+      //     "My Vehicles",
+      //     style: TextStyle(
+      //         color: singInWithGoogleButtonColor,
+      //         fontWeight: FontWeight.w600,
+      //         fontSize: 20.0),
+      //   ),
+      // ),
       body: SafeArea(
         child: Column(
           children: [

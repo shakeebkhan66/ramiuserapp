@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:intl/intl.dart';
 import '../constants/colors.dart';
+import '../constants/utils.dart';
+
 
 class VehicleWashTimeScreen extends StatefulWidget {
   const VehicleWashTimeScreen({Key? key}) : super(key: key);
@@ -11,30 +14,52 @@ class VehicleWashTimeScreen extends StatefulWidget {
 }
 
 class _VehicleWashTimeScreenState extends State<VehicleWashTimeScreen> {
+
+  DateTime dateTime = DateTime.now();
+
+  int index = 0;
+  var value;
+  var currentDate;
+  static List<String> values = [
+    '12 PM - 1 PM',
+    '1 PM - 2 PM',
+    '2 PM - 3 PM',
+    '3 PM - 4 PM',
+    '4 PM - 5 PM',
+    '5 PM - 6 PM',
+    '6 PM - 7 PM',
+    '7 PM - 8 PM',
+    '8 PM - 9 PM',
+    '9 PM - 10 PM',
+    '10 PM - 11 PM',
+    '11 PM - 12 AM',
+  ];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: singInWithFacebookButtonColor,
-      appBar: AppBar(
-        backgroundColor: backgroundColorLoginScreen,
-        automaticallyImplyLeading: false,
-        title: const Text(
-          "Select Arrival Time",
-          style: TextStyle(
-              color: singInWithGoogleButtonColor,
-              fontWeight: FontWeight.w600,
-              fontSize: 20.0),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: backgroundColorLoginScreen,
+      //   automaticallyImplyLeading: false,
+      //   title: const Text(
+      //     "Select Arrival Time",
+      //     style: TextStyle(
+      //         color: singInWithGoogleButtonColor,
+      //         fontWeight: FontWeight.w600,
+      //         fontSize: 20.0),
+      //   ),
+      // ),
       body: SafeArea(
         child: Column(
           children: [
+            const SizedBox(height: 15.0,),
             Container(
               height: 100,
               width: MediaQuery.of(context).size.width,
               // padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              margin: const EdgeInsets.symmetric(
-                  vertical: 3.0, horizontal: 5),
+              margin: const EdgeInsets.symmetric(vertical: 3.0, horizontal: 5),
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10.0),
@@ -62,8 +87,7 @@ class _VehicleWashTimeScreenState extends State<VehicleWashTimeScreen> {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(5.0),
-                            border:
-                            Border.all(color: Colors.grey.shade400),
+                            border: Border.all(color: Colors.grey.shade400),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.4),
@@ -103,13 +127,15 @@ class _VehicleWashTimeScreenState extends State<VehicleWashTimeScreen> {
               ),
             ),
             InkWell(
-              onTap: (){},
+              onTap: () {
+                selectTimeAndDate();
+              },
               child: Container(
                   height: 80,
                   width: MediaQuery.of(context).size.width,
                   alignment: Alignment.center,
-                  margin: const EdgeInsets.symmetric(
-                      vertical: 1.0, horizontal: 20),
+                  margin:
+                  const EdgeInsets.symmetric(vertical: 1.0, horizontal: 20),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(7.0),
                     border: Border.all(color: Colors.grey.shade400),
@@ -127,9 +153,11 @@ class _VehicleWashTimeScreenState extends State<VehicleWashTimeScreen> {
                         style: GoogleFonts.actor(
                             color: singInWithFacebookButtonColor),
                       ),
-                      const SizedBox(height: 3.0,),
+                      const SizedBox(
+                        height: 3.0,
+                      ),
                       Text(
-                        "TODAY, 6 PM - 7 PM",
+                        "${currentDate}, ${value}" ?? "TODAY, 6 PM - 7 PM",
                         style: GoogleFonts.actor(
                             letterSpacing: 2.0,
                             fontSize: 17,
@@ -137,14 +165,15 @@ class _VehicleWashTimeScreenState extends State<VehicleWashTimeScreen> {
                             color: Colors.white),
                       ),
                     ],
-                  )
-              ),
+                  )),
             ),
-            const SizedBox(height: 30.0,),
+            const SizedBox(
+              height: 30.0,
+            ),
             Expanded(
               child: ListView.builder(
                 itemCount: 3,
-                itemBuilder: (context, index){
+                itemBuilder: (context, index) {
                   return Column(
                     children: [
                       Container(
@@ -165,7 +194,7 @@ class _VehicleWashTimeScreenState extends State<VehicleWashTimeScreen> {
                               )
                             ]),
                         child: Column(
-                          children:  [
+                          children: [
                             const SizedBox(
                               height: 10,
                             ),
@@ -173,13 +202,16 @@ class _VehicleWashTimeScreenState extends State<VehicleWashTimeScreen> {
                               padding: EdgeInsets.only(left: 10.0),
                               child: Align(
                                   alignment: Alignment.topLeft,
-                                  child: Icon(Icons.favorite_border, color: Colors.grey,)),
+                                  child: Icon(
+                                    Icons.favorite_border,
+                                    color: Colors.grey,
+                                  )),
                             ),
                             const SizedBox(
                               height: 2.0,
                             ),
                             Column(
-                              children:  [
+                              children: [
                                 Row(
                                   children: [
                                     const SizedBox(width: 198),
@@ -188,20 +220,37 @@ class _VehicleWashTimeScreenState extends State<VehicleWashTimeScreen> {
                                         const Text(
                                           "Bori Wash",
                                           style: TextStyle(
-                                              color: singInWithGoogleButtonColor,
+                                              color:
+                                              singInWithGoogleButtonColor,
                                               fontWeight: FontWeight.w600,
                                               fontSize: 20.0),
                                         ),
-                                        const SizedBox(height: 3.0,),
+                                        const SizedBox(
+                                          height: 3.0,
+                                        ),
                                         Row(
-                                          children:  const [
+                                          children: const [
                                             Text("(82)"),
-                                            Icon(Icons.star, color: Colors.yellow,),
-                                            Icon(Icons.star, color: Colors.yellow,),
-                                            Icon(Icons.star, color: Colors.yellow,),
-                                            Icon(Icons.star, color: Colors.yellow,),
-                                            Icon(Icons.star, color: Colors.yellow,),
-
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.yellow,
+                                            ),
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.yellow,
+                                            ),
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.yellow,
+                                            ),
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.yellow,
+                                            ),
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.yellow,
+                                            ),
                                           ],
                                         ),
                                       ],
@@ -214,25 +263,33 @@ class _VehicleWashTimeScreenState extends State<VehicleWashTimeScreen> {
                                             vertical: 3.0, horizontal: 15.0),
                                         decoration: BoxDecoration(
                                             color: Colors.white,
-                                            borderRadius: BorderRadius.circular(5.0),
-                                            border:
-                                            Border.all(color: Colors.grey.shade400),
+                                            borderRadius:
+                                            BorderRadius.circular(5.0),
+                                            border: Border.all(
+                                                color: Colors.grey.shade400),
                                             boxShadow: [
                                               BoxShadow(
-                                                color: Colors.grey.withOpacity(0.4),
+                                                color: Colors.grey
+                                                    .withOpacity(0.4),
                                                 offset: const Offset(0.1, 0.1),
                                                 blurRadius: 5,
                                               )
                                             ]),
-                                        child: Image.asset("assets/images/car.png", height: 50,)
-                                    ),
+                                        child: Image.asset(
+                                          "assets/images/car.png",
+                                          height: 50,
+                                        )),
                                   ],
                                 ),
                               ],
                             ),
-
-                            Divider(color: Colors.grey.withOpacity(0.2), thickness: 2.0,),
-                            const SizedBox(height: 10.0,),
+                            Divider(
+                              color: Colors.grey.withOpacity(0.2),
+                              thickness: 2.0,
+                            ),
+                            const SizedBox(
+                              height: 10.0,
+                            ),
                             const Text(
                               "Whole Car Wash",
                               style: TextStyle(
@@ -240,7 +297,9 @@ class _VehicleWashTimeScreenState extends State<VehicleWashTimeScreen> {
                                   fontWeight: FontWeight.w600,
                                   fontSize: 20.0),
                             ),
-                            const SizedBox(height: 4.0,),
+                            const SizedBox(
+                              height: 4.0,
+                            ),
                             const Text(
                               "70 ILS",
                               style: TextStyle(
@@ -248,7 +307,6 @@ class _VehicleWashTimeScreenState extends State<VehicleWashTimeScreen> {
                                   fontWeight: FontWeight.w600,
                                   fontSize: 20.0),
                             ),
-
                           ],
                         ),
                       ),
@@ -262,5 +320,152 @@ class _VehicleWashTimeScreenState extends State<VehicleWashTimeScreen> {
       ),
     );
   }
+
+  // TODO Select Time
+  selectTimeAndDate() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Container(
+              height: 210,
+              width: MediaQuery.of(context).size.width,
+              child:  Image.asset(
+                "assets/images/carwash.jpg",
+                fit: BoxFit.cover,
+              ),
+            ),
+            actions: [
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "SELECT ARRIVAL DATE & TIME",
+                  style: GoogleFonts.acme(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20,
+                      letterSpacing: 1.0,
+                      color: singInWithGoogleButtonColor),
+                ),
+              ),
+              const SizedBox(height: 20.0,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MaterialButton(
+                    color: backgroundColorLoginScreen,
+                    height: 50,
+                    minWidth: 100,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    onPressed: () {
+                      Utils.showSheet(
+                        context,
+                        child: buildDatePicker(),
+                        onClicked: () {
+                          setState(() {
+                            currentDate = DateFormat('yyyy/MM/dd').format(dateTime);
+                          });
+                          Utils.showSnackBar(context, 'Selected "$currentDate"');
+                          Navigator.pop(context);
+                        },
+                      );
+                    },
+                    child: const Text(
+                      "Select Date",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  MaterialButton(
+                    color: singInWithGoogleButtonColor,
+                    height: 50,
+                    minWidth: 100,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    onPressed: () {
+                      Utils.showSheet(
+                        context,
+                        child: buildCustomPicker(),
+                        onClicked: () {
+                          setState(() {
+                            value = values[index];
+                          });
+
+                          Utils.showSnackBar(context, 'Selected "$value"');
+
+                          Navigator.pop(context);
+                        },
+                      );
+                    },
+                    child: const Text(
+                      "Select Time",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(height: 20.0,),
+              Center(
+                child: MaterialButton(
+                  height: 50,
+                  minWidth: 100,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
+                  color: Colors.green,
+                  child: const Text("Selection Completed", style: TextStyle(color: singInWithFacebookButtonColor),),
+                ),
+              ),
+              const SizedBox(height: 20.0,),
+            ],
+          );
+        });
+  }
+
+
+  // TODO For Selecting Date
+  Widget buildDatePicker() => SizedBox(
+    height: 300,
+    child: CupertinoDatePicker(
+      minimumYear: 2015,
+      maximumYear: DateTime.now().year,
+      initialDateTime: dateTime,
+      mode: CupertinoDatePickerMode.date,
+      onDateTimeChanged: (dateTime) =>
+          setState(() => this.dateTime = dateTime),
+    ),
+  );
+
+  // TODO Selecting Time
+  Widget buildCustomPicker() => SizedBox(
+    height: 300,
+    child: CupertinoPicker(
+      itemExtent: 64,
+      diameterRatio: 0.7,
+      looping: true,
+      onSelectedItemChanged: (index) => setState(() => this.index = index),
+      // selectionOverlay: Container(),
+      children: Utils.modelBuilder<String>(
+        values,
+            (index, value) {
+          final isSelected = this.index == index;
+          final color = isSelected ? Colors.pink : Colors.black;
+
+          return Center(
+            child: Text(
+              value,
+              style: TextStyle(color: color, fontSize: 24),
+            ),
+          );
+        },
+      ),
+    ),
+  );
 }
 

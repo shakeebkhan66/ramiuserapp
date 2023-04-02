@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:userapp/screens/authentication/login_screen.dart';
+import 'package:userapp/screens/vehicles/drawer_screen.dart';
 
 import '../vehicles/myvehicles.dart';
 
@@ -15,19 +16,10 @@ class GoogleSignInProvider with ChangeNotifier{
   GoogleSignInAccount? _user;
   GoogleSignInAccount get user => _user!;
 
-  bool _isLoading = false;
-  bool get isLoading => _isLoading;
-
-
   // TODO For Login
   Future googleLogIn(context) async{
 
     try{
-
-      if(!this.isLoading){
-        this._isLoading = true;
-        notifyListeners();
-      }
 
       final googleUser = await googleSignIn.signIn();
       if(googleUser == null) return;
@@ -41,7 +33,7 @@ class GoogleSignInProvider with ChangeNotifier{
                 type: PageTransitionType.topToBottom,
                 duration: const Duration(milliseconds: 1000),
                 alignment: Alignment.bottomCenter,
-                child: const MyVehicles()));
+                child: MyDrawer()));
       }
 
       final googleAuth = await googleUser.authentication;
