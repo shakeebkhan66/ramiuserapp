@@ -7,10 +7,9 @@ class Loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: facebookColor,
       child: const Center(
         child: SpinKitChasingDots(
-          color: backgroundColorLoginScreen,
+          color: singInWithFacebookButtonColor,
           duration:  Duration(milliseconds: 700),
           size: 40.0,
         ),

@@ -14,6 +14,7 @@ import '../constants/spinkit.dart';
 import 'authservice_screen.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const routeName = '/loginScreen';
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -86,76 +87,83 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            InkWell(
-              onTap: () {
-                // AuthService().signInWithGoogle().then((value) {
-                //   fireStore
-                //       .collection('users')
-                //       .doc('auth')
-                //       .collection('googleUsers')
-                //       .add({
-                //     'name': AuthService().name,
-                //     'email': AuthService().email,
-                //     'phoneNo': AuthService().phoneNo,
-                //     'imageUrl': AuthService().imageUrl
-                //   });
-                //   Navigator.push(
-                //       context,
-                //       PageTransition(
-                //           type: PageTransitionType.topToBottom,
-                //           duration: const Duration(milliseconds: 1000),
-                //           alignment: Alignment.bottomCenter,
-                //           child: const MyVehicles()));
-                // }).catchError((e) {
-                //   print(e);
-                //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                //       backgroundColor: Colors.redAccent,
-                //       dismissDirection: DismissDirection.startToEnd,
-                //       content: Text(
-                //         e.toString(),
-                //         style:
-                //             const TextStyle(color: Colors.white, fontSize: 17),
-                //       )));
-                // });
-                googleProvider.googleLogIn(context);
-              },
-              child: Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width,
-                margin:
+            Center(
+              child: Consumer<GoogleSignInProvider>(
+                builder: (context, authProvider, child) => authProvider.isLoading
+                    ?  Loading()
+                : InkWell(
+                  onTap: () {
+                    // AuthService().signInWithGoogle().then((value) {
+                    //   fireStore
+                    //       .collection('users')
+                    //       .doc('auth')
+                    //       .collection('googleUsers')
+                    //       .add({
+                    //     'name': AuthService().name,
+                    //     'email': AuthService().email,
+                    //     'phoneNo': AuthService().phoneNo,
+                    //     'imageUrl': AuthService().imageUrl
+                    //   });
+                    //   Navigator.push(
+                    //       context,
+                    //       PageTransition(
+                    //           type: PageTransitionType.topToBottom,
+                    //           duration: const Duration(milliseconds: 1000),
+                    //           alignment: Alignment.bottomCenter,
+                    //           child: const MyVehicles()));
+                    // }).catchError((e) {
+                    //   print(e);
+                    //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    //       backgroundColor: Colors.redAccent,
+                    //       dismissDirection: DismissDirection.startToEnd,
+                    //       content: Text(
+                    //         e.toString(),
+                    //         style:
+                    //             const TextStyle(color: Colors.white, fontSize: 17),
+                    //       )));
+                    // });
+                    googleProvider.googleLogIn(context);
+
+                  },
+                  child: Container(
+                    height: 60,
+                    width: MediaQuery.of(context).size.width,
+                    margin:
                     const EdgeInsets.symmetric(vertical: 10.0, horizontal: 50),
-                decoration: BoxDecoration(
-                    color: singInWithFacebookButtonColor,
-                    borderRadius: BorderRadius.circular(8.0),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black38,
-                        offset: Offset(0, 0.1),
-                        blurRadius: 10.0,
-                      )
-                    ]),
-                child: Row(
-                  children: [
-                    const SizedBox(
-                      width: 20,
+                    decoration: BoxDecoration(
+                        color: singInWithFacebookButtonColor,
+                        borderRadius: BorderRadius.circular(8.0),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black38,
+                            offset: Offset(0, 0.1),
+                            blurRadius: 10.0,
+                          )
+                        ]),
+                    child: Row(
+                      children: [
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        Image.asset(
+                          "assets/images/googlelogo.png",
+                          height: 30,
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          "Sign in with Google",
+                          style: GoogleFonts.openSans(
+                              color: singInWithGoogleButtonColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18),
+                        )
+                      ],
                     ),
-                    Image.asset(
-                      "assets/images/googlelogo.png",
-                      height: 30,
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      "Sign in with Google",
-                      style: GoogleFonts.openSans(
-                          color: singInWithGoogleButtonColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    )
-                  ],
+                  ),
                 ),
-              ),
+              )
             )
           ],
         ),
