@@ -82,7 +82,8 @@ class _CustomerLoginScreenState extends State<CustomerLoginScreen> {
                       return null;
                     }
                   },
-                  text: "Email",
+                  text: "Enter your email",
+                  labelText: "Email",
                 ),
                 const SizedBox(
                   height: 7.0,
@@ -110,7 +111,9 @@ class _CustomerLoginScreenState extends State<CustomerLoginScreen> {
                         return null;
                       }
                     },
-                    text: "Password"),
+                    text: "Enter your password",
+                  labelText: "Password",
+                ),
                 const SizedBox(height: 30.0,),
                 MaterialButton(
                   splashColor: backgroundColorLoginScreen1,
@@ -123,22 +126,12 @@ class _CustomerLoginScreenState extends State<CustomerLoginScreen> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // setState(() {
-                      //   isLoading = false;
-                      // });
                       apiScreen.customerLogin(emailController.text.toString(),
                           passwordController.text.toString(), context);
-                      // setState(() {
-                      //   isLoading = true;
-                      // });
                       print("Validate");
                     } else {
-                      // setState(() {
-                      //   isLoading = true;
-                      // });
                       print("Not Validate");
                     }
-                    // Navigator.pushNamed(context, BottomNavigationBarScreen.routeName);
                   },
                   child: Text(
                     "Log in",

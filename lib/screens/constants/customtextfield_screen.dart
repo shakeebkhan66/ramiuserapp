@@ -3,11 +3,13 @@ import 'colors.dart';
 
 class CustomTextFieldScreen extends StatelessWidget {
   String? text;
+  String? labelText;
   TextEditingController myController;
   String? Function(String?)? validator;
   CustomTextFieldScreen(
       {Key? key,
         required this.text,
+        required this.labelText,
         required this.myController,
         required this.validator})
       : super(key: key);
@@ -25,6 +27,8 @@ class CustomTextFieldScreen extends StatelessWidget {
             fillColor: singInWithFacebookButtonColor,
             hintText: text,
             hintStyle: const TextStyle(color: backgroundColorLoginScreen),
+            labelText: labelText,
+            labelStyle: const TextStyle(color: singInWithGoogleButtonColor),
             border:
             OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
             enabledBorder: OutlineInputBorder(
@@ -40,6 +44,7 @@ class CustomTextFieldScreen extends StatelessWidget {
 
 class CustomTextFieldPassword extends StatelessWidget {
   String? text;
+  String? labelText;
   final TextEditingController myController;
   final String? Function(String?)? validator;
   Widget? icon;
@@ -49,6 +54,7 @@ class CustomTextFieldPassword extends StatelessWidget {
         required this.isObscure,
         this.icon,
         required this.text,
+        required this.labelText,
         required this.myController,
         required this.validator})
       : super(key: key);
@@ -68,6 +74,8 @@ class CustomTextFieldPassword extends StatelessWidget {
             suffixIcon: icon,
             hintText: text,
             hintStyle: const TextStyle(color: backgroundColorLoginScreen),
+            labelText: labelText,
+            labelStyle: const TextStyle(color: singInWithGoogleButtonColor),
             border:
             OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
             enabledBorder: OutlineInputBorder(

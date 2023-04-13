@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../constants/colors.dart';
 
 class PaymentScreen extends StatefulWidget {
+  static const routeName = '/paymentScreen';
   const PaymentScreen({Key? key}) : super(key: key);
 
   @override

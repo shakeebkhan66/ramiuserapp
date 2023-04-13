@@ -184,7 +184,10 @@ class _LocationScreenState extends State<LocationScreen> {
                               type: PageTransitionType.leftToRight,
                               alignment: Alignment.bottomCenter,
                               duration: const Duration(milliseconds: 500),
-                              child: const VehicleWashTimeScreen()));
+                              child: VehicleWashTimeScreen(
+                                latitude: latitude,
+                                longitude: longitude,
+                              )));
                     },
                     child: Container(
                       height: 50,

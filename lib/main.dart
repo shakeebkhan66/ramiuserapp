@@ -5,10 +5,16 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:userapp/screens/authentication/login_customer_screen.dart';
 import 'package:userapp/screens/authentication/login_screen.dart';
+import 'package:userapp/screens/profile/profile_screen.dart';
 import 'package:userapp/screens/providers/facebooksigninprovider.dart';
 import 'package:userapp/screens/providers/googlesigninprovider.dart';
 import 'package:userapp/screens/sharedpreference/sharedpref_class.dart';
+import 'package:userapp/screens/vehicles/addnewvehicle_screen.dart';
 import 'package:userapp/screens/vehicles/drawer_screen.dart';
+import 'package:userapp/screens/vehicles/myreservation_screen.dart';
+import 'package:userapp/screens/vehicles/myvehicles.dart';
+import 'package:userapp/screens/vehicles/payment_screen.dart';
+import 'package:userapp/screens/vehicles/selecttime_screen.dart';
 
 
 
@@ -49,8 +55,14 @@ class MyApp extends StatelessWidget {
         initialRoute: "/",
         routes: {
           LoginScreen.routeName: (context) => const LoginScreen(),
-          CustomerLoginScreen.routeName: (context) => const CustomerLoginScreen()
-          // AllRecipesScreen.routeName: (context) => const AllRecipesScreen(),
+          CustomerLoginScreen.routeName: (context) => const CustomerLoginScreen(),
+          AddNewVehicle.routeName: (context) => const AddNewVehicle(),
+          ProfileScreen.routeName: (context) => const ProfileScreen(),
+          MyVehicles.routeName: (context) =>  MyVehicles(),
+          PaymentScreen.routeName: (context) => const PaymentScreen(),
+          MyReservationScreen.routeName: (context) => const MyReservationScreen(),
+          VehicleWashTimeScreen.routeName: (context) => VehicleWashTimeScreen(),
+          MyDrawer.routeName: (context) => MyDrawer(),
         },
       ),
     );
